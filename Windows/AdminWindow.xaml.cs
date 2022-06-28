@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Windows;
+﻿using System.Windows;
+using WaiterProject.Classes;
 
 namespace WaiterProject
 {
@@ -9,21 +8,40 @@ namespace WaiterProject
     /// </summary>
     public partial class AdminWindow : Window
     {
+        private const Role WINDOW_ROLE = Classes.Role.Admin;
+
         public AdminWindow()
         {
             InitializeComponent();
-            Read();
         }
 
-        public void Read()
+        private void ManageUsersButton_Click(object sender, RoutedEventArgs e)
         {
-            using (DataContext context = new DataContext())
+            if (UserContext.getInstance().UserRoleValidation(WINDOW_ROLE))
             {
-                var users = context.Users.ToList();
-                UserListAdmin.ItemsSource = users;
+                ManageUsersWindow manageUsersPanel = new ManageUsersWindow();
+                manageUsersPanel.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("You don't have permission to access this window");
             }
         }
 
+        private void ManageMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserContext.getInstance().UserRoleValidation(WINDOW_ROLE))
+            {
+                
+            }
+            else
+            {
+                MessageBox.Show("You don't have permission to access this window");
+            }
+        }
+
+        /*
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {
             using (DataContext context = new DataContext())
@@ -45,6 +63,6 @@ namespace WaiterProject
                 }
             }
             Read();
-        }
+        }*/
     }
 }

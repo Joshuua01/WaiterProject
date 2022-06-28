@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WaiterProject
+namespace WaiterProject 
 {
     /// <summary>
     /// Logika interakcji dla klasy WaiterWindow.xaml

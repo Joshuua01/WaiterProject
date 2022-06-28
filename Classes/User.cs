@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using WaiterProject.Classes;
 
 namespace WaiterProject
 {
@@ -7,9 +7,9 @@ namespace WaiterProject
     {
         [Key]
         public int UserId { get; set; }
+
         public string Login { get; set; }
         public string Password { get; set; }
-        public string Role { get; set; }
-
+        public Role Role { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Windows;
+using WaiterProject.Classes;
 
 namespace WaiterProject
 {
@@ -9,25 +11,26 @@ namespace WaiterProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        private UserContext session = new UserContext();
+        public UserContext Session = UserContext.getInstance();
 
         public MainWindow()
         {
             InitializeComponent();
+            RoleComboBox.ItemsSource = Enum.GetValues(typeof(Role)).Cast<Role>();
             using (DataContext context = new DataContext())
             {
                 User admin = new User
                 {
                     Login = "admin",
                     Password = "admin",
-                    Role = "Admin"
+                    Role = Classes.Role.Admin
                 };
                 context.Add(admin);
                 User user = new User
                 {
                     Login = "user",
                     Password = "user",
-                    Role = "Waiter"
+                    Role = Classes.Role.Waiter
                 };
                 context.Add(user);
                 try
@@ -57,13 +60,13 @@ namespace WaiterProject
                 var user = db.Users.FirstOrDefault(u => u.Login == LoginTextBox.Text && u.Password == PasswordTextBox.Text);
                 if (user != null)
                 {
-                    if (user.Role == (string)RoleComboBox.SelectedValue && user.Role == "Admin")
-                    {
+                    if (user.Role == (Role)RoleComboBox.SelectedValue &&  Classes.Role.Admin == user.Role )
+                    { 
                         AdminWindow adminWindow = new AdminWindow();
                         adminWindow.Show();
                         this.Close();
                     }
-                    else if (user.Role == (string)RoleComboBox.SelectedValue && user.Role == "Waiter")
+                    else if (user.Role == (Role)RoleComboBox.SelectedValue && Classes.Role.Waiter == user.Role)
                     {
                         WaiterWindow waiterWindow = new WaiterWindow();
                         waiterWindow.Show();
@@ -73,12 +76,13 @@ namespace WaiterProject
                     {
                         MessageBox.Show("Wrong role", "Login Alert!");
                     }
+                    Session.user = user;
                 }
                 else
                 {
                     MessageBox.Show("Wrong login or password", "Login Alert!");
                 }
-                session.user = user;
+                
             }
         }
     }
