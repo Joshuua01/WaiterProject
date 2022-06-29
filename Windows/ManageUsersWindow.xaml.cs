@@ -165,7 +165,7 @@ namespace WaiterProject
             {
                 if (RoleComboBox.SelectedItem != null)
                 {
-                    Update();
+                    Delete();
                     Read();
                 }
                 else

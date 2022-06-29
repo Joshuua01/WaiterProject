@@ -19,7 +19,7 @@ namespace WaiterProject
             RoleComboBox.ItemsSource = Enum.GetValues(typeof(Role)).Cast<Role>();
             using (DataContext context = new DataContext())
             {
-                User admin = new User
+               /* User admin = new User
                 {
                     Login = "admin",
                     Password = "admin",
@@ -39,7 +39,7 @@ namespace WaiterProject
                 }
                 catch (DbUpdateException exception)
                 {
-                }
+                }*/
             }
             Read();
         }

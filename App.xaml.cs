@@ -21,10 +21,10 @@ namespace WaiterProject
         }
         private void ApplicationExit(object sender, ExitEventArgs e)
         {
-            using (DataContext context = new DataContext())
+            /*using (DataContext context = new DataContext())
             {
                 context.Database.EnsureDeleted();
-            }
+            }*/
         }
     }
 }
