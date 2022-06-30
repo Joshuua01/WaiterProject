@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaiterProject"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Button x:Name="ManageUsersButton" Content="Manage Users" HorizontalAlignment="Left" Margin="81,183,0,0" VerticalAlignment="Top" Height="59" Width="121" Click="ManageUsersButton_Click"/>
         <Button x:Name="ManageMenuButton" Content="Manage Menu" HorizontalAlignment="Left" Margin="312,181,0,0" VerticalAlignment="Top" Height="66" Width="150" Click="ManageMenuButton_Click"/>

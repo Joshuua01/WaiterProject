@@ -4,7 +4,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Margin="306,107,0,0">
             <TextBox x:Name="LoginTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="120" />

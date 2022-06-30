@@ -17,30 +17,6 @@ namespace WaiterProject
         {
             InitializeComponent();
             RoleComboBox.ItemsSource = Enum.GetValues(typeof(Role)).Cast<Role>();
-            using (DataContext context = new DataContext())
-            {
-               /* User admin = new User
-                {
-                    Login = "admin",
-                    Password = "admin",
-                    Role = Classes.Role.Admin
-                };
-                context.Add(admin);
-                User user = new User
-                {
-                    Login = "user",
-                    Password = "user",
-                    Role = Classes.Role.Waiter
-                };
-                context.Add(user);
-                try
-                {
-                    context.SaveChanges();
-                }
-                catch (DbUpdateException exception)
-                {
-                }*/
-            }
             Read();
         }
 

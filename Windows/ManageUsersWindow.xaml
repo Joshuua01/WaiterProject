@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaiterProject"
         mc:Ignorable="d"
-        Title="EditUsersPanel" Height="450" Width="800">
+        Title="EditUsersPanel" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <ListView x:Name="UserList" Margin="48,20,48,274" Width="650">
             <ListView.View>

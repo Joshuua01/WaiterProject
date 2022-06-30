@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WaiterProject.Classes;
 
 namespace WaiterProject
 {
@@ -19,8 +20,25 @@ namespace WaiterProject
                 .Property(u => u.Role)
                 .HasConversion<string>()
                 .HasMaxLength(50);
+
+            modelBuilder.Entity<MenuItemType>()
+                .HasIndex(m => m.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<MenuItem>()
+                .HasIndex(m => m.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<MenuItem>()
+                .HasOne<MenuItemType>(m => m.MenuItemType)
+                .WithMany(m => m.MenuItems)
+                .HasForeignKey(mi => mi.MenuItemTypeId);
         }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<MenuItem> MenuItems { get; set; }
+
+        public DbSet<MenuItemType> MenuItemTypes { get; set; }
     }
 }

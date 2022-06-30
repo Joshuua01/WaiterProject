@@ -1,11 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using WaiterProject.Classes;
 
 namespace WaiterProject
 {
@@ -18,13 +15,54 @@ namespace WaiterProject
         {
             DatabaseFacade db = new DatabaseFacade(new DataContext());
             db.EnsureCreated();
+
+            using (DataContext context = new DataContext())
+            {
+                User admin = new User
+                {
+                    Login = "admin",
+                    Password = "admin",
+                    Role = Classes.Role.Admin
+                };
+                context.Add(admin);
+                User user = new User
+                {
+                    Login = "user",
+                    Password = "user",
+                    Role = Classes.Role.Waiter
+                };
+                context.Add(user);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException exception)
+                {
+                }
+            }
+
+            foreach (ItemType itemType in Enum.GetValues(typeof(ItemType)))
+            {
+                using (DataContext context = new DataContext())
+                {
+                    context.Add(new MenuItemType { Name = itemType });
+                    try
+                    {
+                        context.SaveChanges();
+                    }
+                    catch (DbUpdateException exception)
+                    {
+                    }
+                }
+            }
         }
+
         private void ApplicationExit(object sender, ExitEventArgs e)
         {
-            /*using (DataContext context = new DataContext())
+            using (DataContext context = new DataContext())
             {
                 context.Database.EnsureDeleted();
-            }*/
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using WaiterProject.Classes;
+using WaiterProject.Windows;
 
 namespace WaiterProject
 {
@@ -19,8 +20,8 @@ namespace WaiterProject
         {
             if (UserContext.getInstance().UserRoleValidation(WINDOW_ROLE))
             {
-                ManageUsersWindow manageUsersPanel = new ManageUsersWindow();
-                manageUsersPanel.Show();
+                ManageUsersWindow manageUsersWindow = new ManageUsersWindow();
+                manageUsersWindow.Show();
                 this.Close();
             }
             else
@@ -33,7 +34,9 @@ namespace WaiterProject
         {
             if (UserContext.getInstance().UserRoleValidation(WINDOW_ROLE))
             {
-                
+                ManageMenuWindow manageMenuWindow = new ManageMenuWindow();
+                manageMenuWindow.Show();
+                this.Close();
             }
             else
             {
