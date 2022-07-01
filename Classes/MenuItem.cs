@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace WaiterProject.Classes
 {
@@ -12,5 +13,7 @@ namespace WaiterProject.Classes
 
         public int MenuItemTypeId { get; set; }
         public MenuItemType MenuItemType { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

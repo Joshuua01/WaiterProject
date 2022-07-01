@@ -5,11 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaiterProject"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800"
+        Title="AdminWindow" Height="600" Width="1200"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Button x:Name="ManageUsersButton" Content="Manage Users" HorizontalAlignment="Left" Margin="81,183,0,0" VerticalAlignment="Top" Height="59" Width="121" Click="ManageUsersButton_Click"/>
-        <Button x:Name="ManageMenuButton" Content="Manage Menu" HorizontalAlignment="Left" Margin="312,181,0,0" VerticalAlignment="Top" Height="66" Width="150" Click="ManageMenuButton_Click"/>
-        <Button x:Name="UnknownButton" Content="UnknownButton" HorizontalAlignment="Left" Margin="575,0,0,0" VerticalAlignment="Center" Height="60" Width="131"/>
+        <Button x:Name="ManageUsersButton" HorizontalAlignment="Left" Margin="120,200,0,0" VerticalAlignment="Top" Height="250" Width="250" Click="ManageUsersButton_Click" BorderBrush="#FFDDDDDD">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="5" Opacity="0.5" ShadowDepth="10" RenderingBias="Performance" Direction="315"/>
+            </Button.Effect>
+            <Image Source="../img/user.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="200"></Image>
+        </Button>
+        <Button x:Name="ManageMenuButton" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" Height="250" Width="250" Click="ManageMenuButton_Click" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD" Foreground="Black">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="5" Opacity="0.5" ShadowDepth="10" RenderingBias="Performance" Direction="315"/>
+            </Button.Effect>
+            <Image Source="../img/fork.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="200"></Image>
+        </Button>
+        <Button x:Name="ManageOrdersButton" HorizontalAlignment="Right" Margin="0,200,120,0" VerticalAlignment="Top" Height="250" Width="250" Click="ManageOrdersButton_Click" Background="#FFDDDDDD" BorderBrush="#FFDDDDDD">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="5" Opacity="0.5" ShadowDepth="10" RenderingBias="Performance" Direction="315"/>
+            </Button.Effect>
+            <Image Source="../img/receipt.png" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" Height="200"></Image>
+        </Button>
+        <Label Content="Manage Users" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="120,155,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
+        <Label Content="Manage Menu" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,155,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
+        <Label Content="Manage Orders" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="830,155,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
+        <Label Content="Admin Panel"  HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top" Width="250" Height="65" FontSize="40" FontWeight="Bold" Background="White" Foreground="Black"/>
     </Grid>
 </Window>

@@ -4,31 +4,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="600" Width="600
+        "
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid HorizontalAlignment="Left" Height="48" VerticalAlignment="Top" Margin="306,107,0,0">
-            <TextBox x:Name="LoginTextBox" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Width="120" />
-            <TextBox x:Name="PasswordTextBox" HorizontalAlignment="Left" Margin="0,30,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.083,-0.026" />
-        </Grid>
-        <Grid HorizontalAlignment="Left" Height="26" Margin="288,191,0,0" VerticalAlignment="Top" Width="220">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0*" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <ComboBox x:Name="RoleComboBox" HorizontalAlignment="Left" Margin="53,0,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"  />
-            <Label Content="Log in as" HorizontalAlignment="Left" VerticalAlignment="Center" Height="26" Margin="-11,0,0,0" Width="59" Grid.ColumnSpan="2" />
-        </Grid>
-        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Margin="346,256,0,0" VerticalAlignment="Top" Click="LoginButton_Click" />
-        <ListView x:Name="UserList" Margin="450,23,23,292">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Id" Width="20" DisplayMemberBinding="{Binding UserId}" />
-                    <GridViewColumn Header="Login" Width="100" DisplayMemberBinding="{Binding Login}" />
-                    <GridViewColumn Header="Password" Width="100" DisplayMemberBinding="{Binding Password}" />
-                    <GridViewColumn Header="Role" Width="100" DisplayMemberBinding="{Binding Role}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+
+        <TextBox x:Name="LoginTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300" Margin="0,200,0,0" Height="40" FontSize="20" TextAlignment="Center" FontWeight="Bold" BorderBrush="Black" />
+        <TextBox x:Name="PasswordTextBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,260,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300" RenderTransformOrigin="-0.083,-0.026" Height="40" BorderBrush="Black" FontSize="20" FontWeight="Bold" />
+
+        <ComboBox x:Name="RoleComboBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,320,0,0" VerticalAlignment="Top" Width="300" BorderBrush="Black" Background="White" Height="40" FontSize="15" FontWeight="Bold" />
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Margin="0,450,0,0" VerticalAlignment="Top" Click="LoginButton_Click" BorderBrush="White" Background="Black" Width="400" Height="45" FontSize="20" FontWeight="Bold" Foreground="White" />
+        <Label Content="Login"  HorizontalAlignment="Center" Margin="0,70,0,0" VerticalAlignment="Top" Width="120" Height="65" FontSize="40" FontWeight="Bold" Background="White" Foreground="Black"/>
     </Grid>
 </Window>

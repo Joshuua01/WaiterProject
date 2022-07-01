@@ -5,34 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaiterProject.Windows"
         mc:Ignorable="d"
-        Title="ManageMenuWindow" Height="450" Width="800"
+        Title="ManageMenuWindow" Height="600" Width="1200"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView x:Name="MenuList" Margin="91,32,91,308">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="MenuList" Margin="650,0,0,0" Width="510" Height="500" HorizontalAlignment="Left" VerticalAlignment="Center">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="75" Header="MenuItemId" DisplayMemberBinding="{Binding MenuItemId}"/>
-                    <GridViewColumn Width="180" Header="Name" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Width="180" Header="Price" DisplayMemberBinding="{Binding Price}"/>
-                    <GridViewColumn Width="180" Header="Type" DisplayMemberBinding="{Binding MenuItemType.Name}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <TextBox x:Name="NameTextBox"  HorizontalAlignment="Left" Margin="113,276,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PriceTextBox" HorizontalAlignment="Left" Margin="113,299,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="TypeComboBox" HorizontalAlignment="Left" Margin="113,322,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="AddMenuItemButton" Content="Create" HorizontalAlignment="Left" Margin="135,190,0,0" VerticalAlignment="Top" Click="AddMenuItemButton_Click"/>
-        <Button x:Name="EditMenuItemButton" Content="Edit" HorizontalAlignment="Left" Margin="195,190,0,0" VerticalAlignment="Top" Click="EditMenuItemButton_Click"/>
-        <Button x:Name="DeleteMenuItemButton" Content="Delete" HorizontalAlignment="Left" Margin="260,190,0,0" VerticalAlignment="Top" Click="DeleteMenuItemButton_Click"/>
-        <Button x:Name="RefreshMenuItemListButton" Content="Refresh" HorizontalAlignment="Left" Margin="319,190,0,0" VerticalAlignment="Top" Click="RefreshMenuItemListButton_Click"/>
-        <ListView x:Name="MenuItemTypeList" Margin="500,155,28,117">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="120" Header="MenuItemTypeId" DisplayMemberBinding="{Binding MenuItemTypeId}"/>
+                    <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding MenuItemId}"/>
                     <GridViewColumn Width="150" Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Width="150" Header="Price" DisplayMemberBinding="{Binding Price}"/>
+                    <GridViewColumn Width="150" Header="Type" DisplayMemberBinding="{Binding MenuItemType.Name}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBox x:Name="NameTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold" Text="{Binding SelectedItem.Name, ElementName=MenuList}"/>
+        <TextBox x:Name="PriceTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold" Text="{Binding SelectedItem.Price, ElementName=MenuList}"/>
+        <ComboBox x:Name="TypeComboBox"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,400,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold" Text="{Binding SelectedItem.MenuItemType.Name, ElementName=MenuList}"/>
+        <Button x:Name="AddMenuItemButton" Content="Create" HorizontalAlignment="Left" Margin="430,160,0,0" VerticalAlignment="Top" Click="AddMenuItemButton_Click" Width="150" Height="40"/>
+        <Button x:Name="EditMenuItemButton" Content="Edit" HorizontalAlignment="Left" Margin="430,230,0,0" VerticalAlignment="Top" Click="EditMenuItemButton_Click" Width="150" Height="40"/>
+        <Button x:Name="DeleteMenuItemButton" Content="Delete" HorizontalAlignment="Left" Margin="430,300,0,0" VerticalAlignment="Top" Click="DeleteMenuItemButton_Click" Width="150" Height="40"/>
+        <Button x:Name="RefreshMenuItemListButton" Content="Refresh" HorizontalAlignment="Left" Margin="430,370,0,0" VerticalAlignment="Top" Click="RefreshMenuItemListButton_Click" Width="150" Height="40"/>
+        <Label Content="Item Name" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,110,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
+        <Label Content="Price" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,230,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
+        <Label Content="Item Type" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,350,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
 
     </Grid>
 </Window>

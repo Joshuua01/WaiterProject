@@ -33,12 +33,21 @@ namespace WaiterProject
                 .HasOne<MenuItemType>(m => m.MenuItemType)
                 .WithMany(m => m.MenuItems)
                 .HasForeignKey(mi => mi.MenuItemTypeId);
+
+            modelBuilder.Entity<MenuItem>()
+                .HasMany(m => m.Orders)
+                .WithMany(o => o.MenuItems)
+                .UsingEntity<OrderMenuItem>(
+                x => x.HasOne(x => x.Order)
+                .WithMany().HasForeignKey(x => x.OrderId),
+                x => x.HasOne(x => x.MenuItem)
+                .WithMany().HasForeignKey(x => x.MenuItemId)
+                );
         }
 
         public DbSet<User> Users { get; set; }
-
         public DbSet<MenuItem> MenuItems { get; set; }
-
         public DbSet<MenuItemType> MenuItemTypes { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

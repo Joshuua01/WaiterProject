@@ -13,7 +13,6 @@ namespace WaiterProject.Classes
         [Key]
         public int MenuItemTypeId { get; set; }
         public ItemType Name { get; set; }
-        
         public ICollection<MenuItem> MenuItems { get; set; }
     }
 }

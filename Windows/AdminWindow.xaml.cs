@@ -44,6 +44,16 @@ namespace WaiterProject
             }
         }
 
+        private void ManageOrdersButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserContext.getInstance().UserRoleValidation(WINDOW_ROLE))
+            {
+                ManageOrdersWindow manageOrdersWindow = new ManageOrdersWindow();
+                manageOrdersWindow.Show();
+                this.Close();
+            }
+        }
+
         /*
         private void AddUserButton_Click(object sender, RoutedEventArgs e)
         {

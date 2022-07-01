@@ -31,10 +31,6 @@ namespace WaiterProject.Windows
                         .Include(s => s.MenuItemType)
                         .ToList();
                     MenuList.ItemsSource = menuItems;
-
-                    var menuItemTypes = context.MenuItemTypes
-                        .ToList();
-                    MenuItemTypeList.ItemsSource = menuItemTypes;
                 }
             }
         }
@@ -139,6 +135,10 @@ namespace WaiterProject.Windows
         private void RefreshMenuItemListButton_Click(object sender, RoutedEventArgs e)
         {
             Read();
+        }
+
+        private void NameTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
         }
     }
 }

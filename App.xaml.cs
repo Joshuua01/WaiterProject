@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
+using System.Linq;
 using System.Windows;
 using WaiterProject.Classes;
 
@@ -40,10 +41,10 @@ namespace WaiterProject
                 {
                 }
             }
-
-            foreach (ItemType itemType in Enum.GetValues(typeof(ItemType)))
+            
+            using (DataContext context = new DataContext())
             {
-                using (DataContext context = new DataContext())
+                foreach (ItemType itemType in Enum.GetValues(typeof(ItemType)))
                 {
                     context.Add(new MenuItemType { Name = itemType });
                     try
@@ -55,14 +56,39 @@ namespace WaiterProject
                     }
                 }
             }
+
+            using (DataContext context = new DataContext())
+            {
+                Classes.MenuItem menuItem1 = new Classes.MenuItem
+                {
+                    Name = "Pizza",
+                    Price = 10.25,
+                    MenuItemType = context.MenuItemTypes.FirstOrDefault(m => m.Name == ItemType.MainCourse)
+                };
+                Classes.MenuItem menuItem2 = new Classes.MenuItem
+                {
+                    Name = "Sushi",
+                    Price = 10.25,
+                    MenuItemType = context.MenuItemTypes.FirstOrDefault(m => m.Name == ItemType.MainCourse)
+                };
+                context.MenuItems.Add(menuItem1);
+                context.MenuItems.Add(menuItem2);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbUpdateException exception)
+                {
+                }
+            }
         }
 
         private void ApplicationExit(object sender, ExitEventArgs e)
         {
-            using (DataContext context = new DataContext())
+            /*using (DataContext context = new DataContext())
             {
                 context.Database.EnsureDeleted();
-            }
+            }*/
         }
     }
 }

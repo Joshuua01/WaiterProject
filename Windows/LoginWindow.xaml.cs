@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Linq;
 using System.Windows;
 using WaiterProject.Classes;
@@ -17,16 +16,6 @@ namespace WaiterProject
         {
             InitializeComponent();
             RoleComboBox.ItemsSource = Enum.GetValues(typeof(Role)).Cast<Role>();
-            Read();
-        }
-
-        public void Read()
-        {
-            using (DataContext context = new DataContext())
-            {
-                var users = context.Users.ToList();
-                UserList.ItemsSource = users;
-            }
         }
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
@@ -36,8 +25,8 @@ namespace WaiterProject
                 var user = db.Users.FirstOrDefault(u => u.Login == LoginTextBox.Text && u.Password == PasswordTextBox.Text);
                 if (user != null)
                 {
-                    if (user.Role == (Role)RoleComboBox.SelectedValue &&  Classes.Role.Admin == user.Role )
-                    { 
+                    if (user.Role == (Role)RoleComboBox.SelectedValue && Classes.Role.Admin == user.Role)
+                    {
                         AdminWindow adminWindow = new AdminWindow();
                         adminWindow.Show();
                         this.Close();
@@ -58,7 +47,6 @@ namespace WaiterProject
                 {
                     MessageBox.Show("Wrong login or password", "Login Alert!");
                 }
-                
             }
         }
     }
