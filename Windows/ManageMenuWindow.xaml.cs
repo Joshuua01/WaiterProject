@@ -41,23 +41,31 @@ namespace WaiterProject.Windows
             {
                 if (NameTextBox.Text != "" && PriceTextBox.Text != "" && TypeComboBox.SelectedValue != null)
                 {
-                    using (DataContext context = new DataContext())
+                    try
                     {
-                        Classes.MenuItem menuItem = new Classes.MenuItem
+                        using (DataContext context = new DataContext())
                         {
-                            Name = NameTextBox.Text,
-                            Price = Convert.ToDouble(PriceTextBox.Text),
-                            MenuItemType = context.MenuItemTypes.FirstOrDefault(m => m.Name == (ItemType)TypeComboBox.SelectedValue)
-                        };
-                        context.Add(menuItem);
-                        try
-                        {
-                            context.SaveChanges();
+                            Classes.MenuItem menuItem = new Classes.MenuItem
+                            {
+                                Name = NameTextBox.Text,
+                                Price = Convert.ToDouble(PriceTextBox.Text),
+                                MenuItemType = context.MenuItemTypes.FirstOrDefault(m => m.Name == (ItemType)TypeComboBox.SelectedValue),
+                            };
+                            context.Add(menuItem);
+
+                            try
+                            {
+                                context.SaveChanges();
+                            }
+                            catch (DbUpdateException exception)
+                            {
+                                MessageBox.Show("Could not add menu item");
+                            }
                         }
-                        catch (DbUpdateException exception)
-                        {
-                            MessageBox.Show("Could not add menu item");
-                        }
+                    }
+                    catch (System.FormatException e)
+                    {
+                        MessageBox.Show("Invalid price format");
                     }
                 }
             }
