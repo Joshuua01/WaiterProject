@@ -53,6 +53,10 @@ namespace WaiterProject
                         }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("You are not admin");
+                }
             }
         }
 
@@ -84,6 +88,10 @@ namespace WaiterProject
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("You are not admin");
+            }
         }
 
         public void Delete()
@@ -111,6 +119,9 @@ namespace WaiterProject
                         }
                     }
                 }
+            }
+            else{
+                MessageBox.Show("You are not admin");
             }
         }
 
@@ -177,6 +188,21 @@ namespace WaiterProject
             {
                 MessageBox.Show("You are not admin");
             }
+        }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Session.endSession();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdminWindow adminWindow = new AdminWindow();
+            adminWindow.Show();
+            this.Close();
         }
     }
 }

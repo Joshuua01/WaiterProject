@@ -7,7 +7,7 @@
         Title="ManageOrdersWindow" Height="600" Width="1350"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <ListView x:Name="ManageOrdersList" Margin="50,30,0,0" Width="660" Height="300" SelectionChanged="ManageOrdersList_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <ListView x:Name="ManageOrdersList" Margin="50,60,0,0" Width="660" Height="300" SelectionChanged="ManageOrdersList_SelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding OrderId}" />
@@ -19,7 +19,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="ManageOrderItemsList"  Margin="50,350,0,0" Height="150" Width="310" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <ListView x:Name="ManageOrderItemsList"  Margin="50,380,0,0" Height="150" Width="310" HorizontalAlignment="Left" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="150" Header="Name" DisplayMemberBinding="{Binding Name}" />
@@ -27,7 +27,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView x:Name="MenuList" Margin="800,30,0,0" Width="510" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <ListView x:Name="MenuList" Margin="800,60,0,0" Width="510" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="50" Header="Id" DisplayMemberBinding="{Binding MenuItemId}"/>
@@ -37,11 +37,12 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="AddOrderButton" Content="Add Order" HorizontalAlignment="Left" Margin="574,400,0,0" VerticalAlignment="Top" Click="AddOrderButton_Click" Width="150" Height="40"/>
-        <Button x:Name="AddItemOrderButton" Content="Add Item" HorizontalAlignment="Left" Margin="649,460,0,0" VerticalAlignment="Top" Click="AddItemOrderButton_Click" Width="150" Height="40"/>
-        <Button x:Name="ChangeOrderStatusButton" Content="Change Status" HorizontalAlignment="Left" Margin="757,400,0,0" VerticalAlignment="Top" Click="ChangeOrderStatusButton_Click" Width="150" Height="40"/>
-        <Button x:Name="DeleteOrderItemButton" Content="Delete Item" HorizontalAlignment="Left" Margin="865,460,0,0" VerticalAlignment="Top" Click="DeleteOrderItemButton_Click" Width="150" Height="40"/>
-        <Button x:Name="DeleteOrderButton" Content="Delete Order" HorizontalAlignment="Left" Margin="940,400,0,0" VerticalAlignment="Top" Click="DeleteOrderButton_Click" Width="150" Height="40"/>
-
+        <Button x:Name="AddOrderButton" Content="Add Order" HorizontalAlignment="Left" Margin="574,410,0,0" VerticalAlignment="Top" Click="AddOrderButton_Click" Width="150" Height="40"/>
+        <Button x:Name="AddItemOrderButton" Content="Add Item" HorizontalAlignment="Left" Margin="649,470,0,0" VerticalAlignment="Top" Click="AddItemOrderButton_Click" Width="150" Height="40"/>
+        <Button x:Name="ChangeOrderStatusButton" Content="Change Status" HorizontalAlignment="Left" Margin="757,410,0,0" VerticalAlignment="Top" Click="ChangeOrderStatusButton_Click" Width="150" Height="40"/>
+        <Button x:Name="DeleteOrderItemButton" Content="Delete Item" HorizontalAlignment="Left" Margin="865,470,0,0" VerticalAlignment="Top" Click="DeleteOrderItemButton_Click" Width="150" Height="40"/>
+        <Button x:Name="DeleteOrderButton" Content="Delete Order" HorizontalAlignment="Left" Margin="940,410,0,0" VerticalAlignment="Top" Click="DeleteOrderButton_Click" Width="150" Height="40"/>
+        <Button x:Name="LogOutButton" Content="Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="LogOutButton_Click"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="BackButton_Click"/>
     </Grid>
 </Window>

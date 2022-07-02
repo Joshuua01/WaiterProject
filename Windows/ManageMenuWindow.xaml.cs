@@ -137,8 +137,19 @@ namespace WaiterProject.Windows
             Read();
         }
 
-        private void NameTextBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
+            Session.endSession();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdminWindow adminWindow = new AdminWindow();
+            adminWindow.Show();
+            this.Close();
         }
     }
 }

@@ -25,14 +25,20 @@ namespace WaiterProject
                     Password = "admin",
                     Role = Classes.Role.Admin
                 };
-                context.Add(admin);
+                if (!context.Users.Contains(admin))
+                {
+                    context.Add(admin);
+                }
                 User user = new User
                 {
                     Login = "user",
                     Password = "user",
                     Role = Classes.Role.Waiter
                 };
-                context.Add(user);
+                if (!context.Users.Contains(user))
+                {
+                    context.Add(user);
+                }
                 try
                 {
                     context.SaveChanges();
@@ -41,7 +47,7 @@ namespace WaiterProject
                 {
                 }
             }
-            
+
             using (DataContext context = new DataContext())
             {
                 foreach (ItemType itemType in Enum.GetValues(typeof(ItemType)))
@@ -59,20 +65,26 @@ namespace WaiterProject
 
             using (DataContext context = new DataContext())
             {
-                Classes.MenuItem menuItem1 = new Classes.MenuItem
+                Classes.MenuItem Pizza = new Classes.MenuItem
                 {
                     Name = "Pizza",
                     Price = 10.25,
                     MenuItemType = context.MenuItemTypes.FirstOrDefault(m => m.Name == ItemType.MainCourse)
                 };
-                Classes.MenuItem menuItem2 = new Classes.MenuItem
+                if (!context.MenuItems.Contains(Pizza))
+                {
+                    context.Add(Pizza);
+                }
+                Classes.MenuItem Sushi = new Classes.MenuItem
                 {
                     Name = "Sushi",
                     Price = 10.25,
                     MenuItemType = context.MenuItemTypes.FirstOrDefault(m => m.Name == ItemType.MainCourse)
                 };
-                context.MenuItems.Add(menuItem1);
-                context.MenuItems.Add(menuItem2);
+                if (!context.MenuItems.Contains(Sushi))
+                {
+                    context.Add(Sushi);
+                }
                 try
                 {
                     context.SaveChanges();
@@ -85,10 +97,10 @@ namespace WaiterProject
 
         private void ApplicationExit(object sender, ExitEventArgs e)
         {
-            /*using (DataContext context = new DataContext())
+            using (DataContext context = new DataContext())
             {
                 context.Database.EnsureDeleted();
-            }*/
+            }
         }
     }
 }

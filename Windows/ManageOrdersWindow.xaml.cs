@@ -137,5 +137,29 @@ namespace WaiterProject.Windows
             }
             Read();
         }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
+            Session.endSession();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(Session.user.Role == Role.Admin)
+            {
+                AdminWindow adminWindow = new AdminWindow();
+                adminWindow.Show();
+                this.Close();
+            }
+            else if (Session.user.Role == Role.Waiter)
+            {
+                MainWindow loginWindow = new MainWindow();
+                loginWindow.Show();
+                this.Close();
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace WaiterProject
     public partial class AdminWindow : Window
     {
         private const Role WINDOW_ROLE = Classes.Role.Admin;
+        public UserContext Session = UserContext.getInstance();
 
         public AdminWindow()
         {
@@ -52,30 +53,26 @@ namespace WaiterProject
                 manageOrdersWindow.Show();
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("You don't have permission to access this window");
+            }
         }
 
-        /*
-        private void AddUserButton_Click(object sender, RoutedEventArgs e)
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-            using (DataContext context = new DataContext())
-            {
-                User user = new User
-                {
-                    Login = "admin1",
-                    Password = "admin",
-                    Role = "Admin"
-                };
-                context.Add(user);
-                try
-                {
-                    context.SaveChanges();
-                }
-                catch (DbUpdateException exception)
-                {
-                    MessageBox.Show("User already exists");
-                }
-            }
-            Read();
-        }*/
+            Session.endSession();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Session.endSession();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
     }
 }

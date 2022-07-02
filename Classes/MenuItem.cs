@@ -19,7 +19,7 @@ namespace WaiterProject.Classes
 
         public bool Equals(MenuItem other)
         {
-            return this.MenuItemId.Equals(other.MenuItemId);
+            return this.Name.Equals(other.Name);
         }
     }
 }

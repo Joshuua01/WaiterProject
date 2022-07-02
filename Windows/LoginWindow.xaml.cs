@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using WaiterProject.Classes;
+using WaiterProject.Windows;
 
 namespace WaiterProject
 {
@@ -33,7 +34,7 @@ namespace WaiterProject
                     }
                     else if (user.Role == (Role)RoleComboBox.SelectedValue && Classes.Role.Waiter == user.Role)
                     {
-                        WaiterWindow waiterWindow = new WaiterWindow();
+                        ManageOrdersWindow waiterWindow = new ManageOrdersWindow();
                         waiterWindow.Show();
                         this.Close();
                     }
