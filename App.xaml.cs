@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using WaiterProject.Classes;
 
@@ -12,6 +14,16 @@ namespace WaiterProject
     /// </summary>
     public partial class App : Application
     {
+        private string HashPassword(string password)
+        {
+            var sha = SHA256.Create();
+
+            var asByteArray = Encoding.Default.GetBytes(password);
+            var hashedPassword = sha.ComputeHash(asByteArray);
+
+            return Convert.ToBase64String(hashedPassword);
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
             DatabaseFacade db = new DatabaseFacade(new DataContext());
@@ -22,7 +34,7 @@ namespace WaiterProject
                 User admin = new User
                 {
                     Login = "admin",
-                    Password = "admin",
+                    Password = HashPassword("admin"),
                     Role = Classes.Role.Admin
                 };
                 if (!context.Users.Contains(admin))
@@ -32,7 +44,7 @@ namespace WaiterProject
                 User user = new User
                 {
                     Login = "user",
-                    Password = "user",
+                    Password = HashPassword("user"),
                     Role = Classes.Role.Waiter
                 };
                 if (!context.Users.Contains(user))

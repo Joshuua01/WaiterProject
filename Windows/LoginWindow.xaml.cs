@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using WaiterProject.Classes;
 using WaiterProject.Windows;
@@ -19,11 +21,21 @@ namespace WaiterProject
             RoleComboBox.ItemsSource = Enum.GetValues(typeof(Role)).Cast<Role>();
         }
 
+        private string HashPassword(string password)
+        {
+            var sha = SHA256.Create();
+
+            var asByteArray = Encoding.Default.GetBytes(password);
+            var hashedPassword = sha.ComputeHash(asByteArray);
+
+            return Convert.ToBase64String(hashedPassword);
+        }
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             using (var db = new DataContext())
             {
-                var user = db.Users.FirstOrDefault(u => u.Login == LoginTextBox.Text && u.Password == PasswordTextBox.Text);
+                var user = db.Users.FirstOrDefault(u => u.Login == LoginTextBox.Text && u.Password == HashPassword(PasswordTextBox.Password.ToString()));
                 if (user != null)
                 {
                     if (user.Role == (Role)RoleComboBox.SelectedValue && Classes.Role.Admin == user.Role)

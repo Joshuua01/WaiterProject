@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 using WaiterProject.Classes;
 
@@ -21,6 +23,16 @@ namespace WaiterProject
             Read();
         }
 
+        private string HashPassword(string password)
+        {
+            var sha = SHA256.Create();
+
+            var asByteArray = Encoding.Default.GetBytes(password);
+            var hashedPassword = sha.ComputeHash(asByteArray);
+
+            return Convert.ToBase64String(hashedPassword);
+        }
+
         public void Read()
         {
             using (DataContext context = new DataContext())
@@ -36,11 +48,11 @@ namespace WaiterProject
             {
                 if (UserContext.getInstance().UserRoleValidation(WINDOW_ROLE))
                 {
-                    if (LoginTextBox.Text != "" && PasswordTextBox.Text != "" && RoleComboBox.SelectedItem != null)
+                    if (LoginTextBox.Text != "" && PasswordTextBox.Password != "" && RoleComboBox.SelectedItem != null)
                     {
                         var user = new User();
                         user.Login = LoginTextBox.Text;
-                        user.Password = PasswordTextBox.Text;
+                        user.Password = HashPassword(PasswordTextBox.Password);
                         user.Role = (Role)RoleComboBox.SelectedValue;
                         context.Users.Add(user);
                         try
@@ -75,7 +87,7 @@ namespace WaiterProject
                     {
                         var user = context.Users.FirstOrDefault(u => u.UserId == ((User)UserList.SelectedItem).UserId);
                         user.Login = LoginTextBox.Text;
-                        user.Password = PasswordTextBox.Text;
+                        user.Password = HashPassword(PasswordTextBox.Password);
                         user.Role = (Role)RoleComboBox.SelectedValue;
                         try
                         {
@@ -120,7 +132,8 @@ namespace WaiterProject
                     }
                 }
             }
-            else{
+            else
+            {
                 MessageBox.Show("You are not admin");
             }
         }
@@ -129,7 +142,7 @@ namespace WaiterProject
         {
             if (UserContext.getInstance().UserRoleValidation(WINDOW_ROLE))
             {
-                if (LoginTextBox.Text != "" && PasswordTextBox.Text != "" && RoleComboBox.SelectedItem != null)
+                if (LoginTextBox.Text != "" && PasswordTextBox.Password != "" && RoleComboBox.SelectedItem != null)
                 {
                     Create();
                     Read();
@@ -149,7 +162,7 @@ namespace WaiterProject
         {
             if (UserContext.getInstance().UserRoleValidation(WINDOW_ROLE))
             {
-                if (LoginTextBox.Text != "" && PasswordTextBox.Text != "" && RoleComboBox.SelectedItem != null)
+                if (LoginTextBox.Text != "" && PasswordTextBox.Password != "" && RoleComboBox.SelectedItem != null)
                 {
                     Update();
                     Read();
