@@ -74,15 +74,22 @@ namespace WaiterProject.Windows
         {
             var order = (Order)ManageOrdersList.SelectedItem;
             var item = (MenuItem)MenuList.SelectedItem;
-
-            using (DataContext context = new DataContext())
+            if(order.OrderStatus == "Open")
             {
-                var fetchOrder = context.Orders.FirstOrDefault(o => o.OrderId == order.OrderId);
-                fetchOrder.MenuItems.Add(item);
-                fetchOrder.TotalPrice += item.Price;
-                context.SaveChanges();
+                using (DataContext context = new DataContext())
+                {
+                    var fetchOrder = context.Orders.FirstOrDefault(o => o.OrderId == order.OrderId);
+                    fetchOrder.MenuItems.Add(item);
+                    fetchOrder.TotalPrice += item.Price;
+                    context.SaveChanges();
+                }
+                Read();
             }
-            Read();
+            else
+            {
+                MessageBox.Show("Order is closed");
+            }
+            
         }
 
         private void ManageOrdersList_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -119,23 +126,30 @@ namespace WaiterProject.Windows
         {
             var order = (Order)ManageOrdersList.SelectedItem;
             var item = (MenuItem)ManageOrderItemsList.SelectedItem;
-            using (DataContext context = new DataContext())
+            if (order.OrderStatus == "Open")
             {
-                var fetchOrder = context.Orders
-                        .Where(o => o.OrderId == order.OrderId)
-                        .Include(o => o.MenuItems)
-                        .FirstOrDefaultAsync();
-                if (fetchOrder.Result.MenuItems.Remove(item))
+                using (DataContext context = new DataContext())
                 {
-                    fetchOrder.Result.TotalPrice -= item.Price;
-                    context.SaveChanges();
+                    var fetchOrder = context.Orders
+                            .Where(o => o.OrderId == order.OrderId)
+                            .Include(o => o.MenuItems)
+                            .FirstOrDefaultAsync();
+                    if (fetchOrder.Result.MenuItems.Remove(item))
+                    {
+                        fetchOrder.Result.TotalPrice -= item.Price;
+                        context.SaveChanges();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Item not found");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("xd");
-                }
+                Read();
             }
-            Read();
+            else
+            {
+                MessageBox.Show("Order is closed");
+            }
         }
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)

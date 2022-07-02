@@ -18,17 +18,17 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="CreateUserButton" Content="Create" HorizontalAlignment="Left" Margin="430,160,0,0" VerticalAlignment="Top" Click="CreateUserButton_Click" Width="150" Height="40"/>
-        <Button x:Name="EditUserButton" Content="Edit" HorizontalAlignment="Left" Margin="430,230,0,0" VerticalAlignment="Top" Click="EditUserButton_Click" Width="150" Height="40"/>
-        <Button x:Name="DeleteUserButton" Content="Delete" HorizontalAlignment="Left" Margin="430,300,0,0" VerticalAlignment="Top" Click="DeleteUserButton_Click" Width="150" Height="40"/>
-        <TextBox x:Name ="LoginTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
+        <Button x:Name="CreateUserButton" Content="Create" HorizontalAlignment="Left" Margin="430,160,0,0" VerticalAlignment="Top" Click="CreateUserButton_Click" Width="150" Height="40" FontWeight="Bold"/>
+        <Button x:Name="EditUserButton" Content="Edit" HorizontalAlignment="Left" Margin="430,230,0,0" VerticalAlignment="Top" Click="EditUserButton_Click" Width="150" Height="40" FontWeight="Bold"/>
+        <Button x:Name="DeleteUserButton" Content="Delete" HorizontalAlignment="Left" Margin="430,300,0,0" VerticalAlignment="Top" Click="DeleteUserButton_Click" Width="150" Height="40" FontWeight="Bold"/>
+        <TextBox x:Name ="LoginTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold" Text="{Binding SelectedItem.Login, ElementName=UserList}"/>
         <PasswordBox x:Name ="PasswordTextBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,280,0,0"  VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
-        <ComboBox x:Name ="RoleComboBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,400,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
-        <Button x:Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="430,370,0,0" VerticalAlignment="Top" Click="RefreshButton_Click" Width="150" Height="40"/>
+        <ComboBox x:Name ="RoleComboBox" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,400,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold" Text="{Binding SelectedItem.Role, ElementName=UserList}"/>
+        <Button x:Name="RefreshButton" Content="Refresh" HorizontalAlignment="Left" Margin="430,370,0,0" VerticalAlignment="Top" Click="RefreshButton_Click" Width="150" Height="40" FontWeight="Bold"/>
         <Label Content="Login" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,110,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
         <Label Content="Password" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,230,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
         <Label Content="Role" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="100,350,0,0" VerticalAlignment="Top" Width="250" Height="40" FontSize="20" FontWeight="Bold"/>
-        <Button x:Name="LogOutButton" Content="Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="LogOutButton_Click"/>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="BackButton_Click"/>
+        <Button x:Name="LogOutButton" Content="Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="LogOutButton_Click" FontWeight="Bold"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="BackButton_Click" FontWeight="Bold"/>
     </Grid>
 </Window>

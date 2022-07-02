@@ -11,6 +11,7 @@ namespace WaiterProject.Classes
         MainCourse,
         Soup,
         Dessert,
-        Appetizer
+        Appetizer,
+        Drink
     }
 }

@@ -37,12 +37,12 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="AddOrderButton" Content="Add Order" HorizontalAlignment="Left" Margin="574,410,0,0" VerticalAlignment="Top" Click="AddOrderButton_Click" Width="150" Height="40"/>
-        <Button x:Name="AddItemOrderButton" Content="Add Item" HorizontalAlignment="Left" Margin="649,470,0,0" VerticalAlignment="Top" Click="AddItemOrderButton_Click" Width="150" Height="40"/>
-        <Button x:Name="ChangeOrderStatusButton" Content="Change Status" HorizontalAlignment="Left" Margin="757,410,0,0" VerticalAlignment="Top" Click="ChangeOrderStatusButton_Click" Width="150" Height="40"/>
-        <Button x:Name="DeleteOrderItemButton" Content="Delete Item" HorizontalAlignment="Left" Margin="865,470,0,0" VerticalAlignment="Top" Click="DeleteOrderItemButton_Click" Width="150" Height="40"/>
-        <Button x:Name="DeleteOrderButton" Content="Delete Order" HorizontalAlignment="Left" Margin="940,410,0,0" VerticalAlignment="Top" Click="DeleteOrderButton_Click" Width="150" Height="40"/>
-        <Button x:Name="LogOutButton" Content="Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="LogOutButton_Click"/>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="BackButton_Click"/>
+        <Button x:Name="AddOrderButton" Content="Add Order" HorizontalAlignment="Left" Margin="574,410,0,0" VerticalAlignment="Top" Click="AddOrderButton_Click" Width="150" Height="40" FontWeight="Bold"/>
+        <Button x:Name="AddItemOrderButton" Content="Add Item" HorizontalAlignment="Left" Margin="649,470,0,0" VerticalAlignment="Top" Click="AddItemOrderButton_Click" Width="150" Height="40" FontWeight="Bold"/>
+        <Button x:Name="ChangeOrderStatusButton" Content="Change Status" HorizontalAlignment="Left" Margin="757,410,0,0" VerticalAlignment="Top" Click="ChangeOrderStatusButton_Click" Width="150" Height="40" FontWeight="Bold"/>
+        <Button x:Name="DeleteOrderItemButton" Content="Delete Item" HorizontalAlignment="Left" Margin="865,470,0,0" VerticalAlignment="Top" Click="DeleteOrderItemButton_Click" Width="150" Height="40" FontWeight="Bold"/>
+        <Button x:Name="DeleteOrderButton" Content="Delete Order" HorizontalAlignment="Left" Margin="940,410,0,0" VerticalAlignment="Top" Click="DeleteOrderButton_Click" Width="150" Height="40" FontWeight="Bold"/>
+        <Button x:Name="LogOutButton" Content="Logout" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="LogOutButton_Click" FontWeight="Bold"/>
+        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" Width="150" Height="40" Click="BackButton_Click" FontWeight="Bold"/>
     </Grid>
 </Window>

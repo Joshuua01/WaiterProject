@@ -38,23 +38,30 @@ namespace WaiterProject
                 var user = db.Users.FirstOrDefault(u => u.Login == LoginTextBox.Text && u.Password == HashPassword(PasswordTextBox.Password.ToString()));
                 if (user != null)
                 {
-                    if (user.Role == (Role)RoleComboBox.SelectedValue && Classes.Role.Admin == user.Role)
+                    if (RoleComboBox.SelectedValue != null)
                     {
-                        AdminWindow adminWindow = new AdminWindow();
-                        adminWindow.Show();
-                        this.Close();
-                    }
-                    else if (user.Role == (Role)RoleComboBox.SelectedValue && Classes.Role.Waiter == user.Role)
-                    {
-                        ManageOrdersWindow waiterWindow = new ManageOrdersWindow();
-                        waiterWindow.Show();
-                        this.Close();
+                        if (user.Role == (Role)RoleComboBox.SelectedValue && Classes.Role.Admin == user.Role)
+                        {
+                            AdminWindow adminWindow = new AdminWindow();
+                            adminWindow.Show();
+                            this.Close();
+                        }
+                        else if (user.Role == (Role)RoleComboBox.SelectedValue && Classes.Role.Waiter == user.Role)
+                        {
+                            ManageOrdersWindow waiterWindow = new ManageOrdersWindow();
+                            waiterWindow.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Wrong role", "Login Alert!");
+                        }
+                        Session.user = user;
                     }
                     else
                     {
-                        MessageBox.Show("Wrong role", "Login Alert!");
+                        MessageBox.Show("Pick role", "Login Alert!");
                     }
-                    Session.user = user;
                 }
                 else
                 {
