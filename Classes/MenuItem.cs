@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace WaiterProject.Classes
 {
-    public class MenuItem
+    public class MenuItem : IEquatable<MenuItem>
     {
         [Key]
         public int MenuItemId { get; set; }
@@ -15,5 +16,10 @@ namespace WaiterProject.Classes
         public MenuItemType MenuItemType { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
+
+        public bool Equals(MenuItem other)
+        {
+            return this.MenuItemId.Equals(other.MenuItemId);
+        }
     }
 }
